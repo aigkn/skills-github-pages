@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>跨年倒计时</title>
+    <link rel="stylesheet" href="../css/time.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">跨年倒计时</div>
+        <div id="message" class="sub_header">准备迎接新年的到来！</div>
+        <div id="countdown" class="time"></div>
+        <script>
+            var countDownDate = new Date("2025-01-29 00:00:00").getTime();
+            function updateCountdown() {
+                var now = new Date().getTime();
+                var distance = countDownDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = days + '天' + hours + '小时' + minutes + '分钟' + seconds + '秒';
+                if (distance < 0) {
+                    document.getElementById("message").innerHTML = "新年快乐！";
+                    location.href = "新年快乐.html"
+                }
+            }
+            setInterval(updateCountdown, 1000);
+        </script>
+    </div>
+</body>
+
+</html>
